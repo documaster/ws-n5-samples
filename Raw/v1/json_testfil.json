@@ -1,0 +1,69 @@
+{
+    "actions": [
+      {
+        "action": "save",
+        "type": "Mappe",
+        "id": "fdccd211-cfb3-4bba-94c0-02e47b5ff019",
+        "fields": {
+          "tittel": "Testing"
+        }
+      },
+      {
+        "action": "link",
+        "type": "Mappe",
+        "id": "fdccd211-cfb3-4bba-94c0-02e47b5ff019",
+        "ref": "refPrimaerKlasse",
+        "linkToId": "708"
+      },
+      {
+        "action": "link",
+        "type": "Mappe",
+        "id": "fdccd211-cfb3-4bba-94c0-02e47b5ff019",
+        "ref": "refArkivdel",
+        "linkToId": "332"
+      },
+      {
+        "action": "save",
+        "type": "Basisregistrering",
+        "id": "cd78b084-d817-4139-99cf-8ccf9886578d",
+        "version": 1,
+        "fields": {
+          "tittel": "Ny basisregistrering",
+          "offentligTittel": "Ny mappe",
+          "beskrivelse": "Bare en mappe",
+          "dokumentmedium": "E",
+          "registreringsDato": "2018-10-03"
+        }
+      },
+      {
+        "action": "link",
+        "type": "Basisregistrering",
+        "id": "cd78b084-d817-4139-99cf-8ccf9886578d",
+        "ref": "refMappe",
+        "linkToId": "fdccd211-cfb3-4bba-94c0-02e47b5ff019"
+      },
+      {
+        "action": "save",
+        "type": "Dokument",
+        "id": "efd17e8f-d8c2-4f38-976b-81bd3ae2f671",
+        "fields": {
+          "dokumenttype": "SOEKNAD",
+          "dokumentstatus": "F",
+          "tittel": "Ny dokumentregistrering",
+          "beskrivelse": "Tester registrering",
+          "forfatter": "Documaster Ninja",
+          "dokumentmedium": "E",
+          "tilknyttetRegistreringSom": "H",
+          "dokumentnummer": 1
+        }
+      },
+      {
+        "action": "link",
+        "type": "Dokument",
+        "id": "efd17e8f-d8c2-4f38-976b-81bd3ae2f671",
+        "ref": "refRegistrering",
+        "linkToId": "cd78b084-d817-4139-99cf-8ccf9886578d"
+      }
+    ]
+  }
+  
