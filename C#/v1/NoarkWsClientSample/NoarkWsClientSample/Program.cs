@@ -42,6 +42,12 @@ namespace NoarkWsClientSample
 
             FullTextSearchSample fullTextSearchSample = new FullTextSearchSample(documasterClients);
             fullTextSearchSample.Search();
+
+            BusinessSpecificMetadataSample businessSpecificMetadataSample =
+                new BusinessSpecificMetadataSample(documasterClients);
+            businessSpecificMetadataSample.GetBusinessSpecificMetadataRegistry();
+            businessSpecificMetadataSample.CrudOperationsWithBusinessSpecificMetadata();
+            businessSpecificMetadataSample.AddAndUpdateBusinessSpecificMetadataToCaseFile("case file title");
         }
 
         private static Options ParserCommandLineArguments(string[] args)
