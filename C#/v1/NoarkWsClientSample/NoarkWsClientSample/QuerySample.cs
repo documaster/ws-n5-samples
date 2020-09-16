@@ -146,5 +146,28 @@ namespace NoarkWsClientSample
                 Console.WriteLine($"Registry entry: Id: {registryEntry.Id}. Title: {registryEntry.Tittel}");
             }
         }
+
+        public void GetCaseFileByTwoSecondaryClassesUsingJoins(string secondaryClassIdent1, string secondaryClassIdent2)
+        {
+            NoarkClient client = this.documasterClients.GetNoarkClient();
+
+            int pageSize = 1;
+
+            QueryResponse<Saksmappe> queryResponse =
+                 client.Query<Saksmappe>("#klasse1.klasseIdent=@klasseIdent1 && #klasse2.klasseIdent=@klasseIdent2",
+                        pageSize)
+                    .AddJoin("#klasse1", "refSekundaerKlasse")
+                    .AddJoin("#klasse2", "refSekundaerKlasse")
+                    .AddQueryParam("@klasseIdent1", secondaryClassIdent1)
+                    .AddQueryParam("@klasseIdent2", secondaryClassIdent2)
+                    .Execute();
+
+            if (queryResponse.Results.Any())
+            {
+                Saksmappe saksmappe = queryResponse.Results.First();
+                Console.WriteLine($"Found a case file with title '{saksmappe.Tittel}' linked to two secondary classes with klasseIdent '{secondaryClassIdent1}' and klasseIdent '{secondaryClassIdent2}'");
+            }
+
+        }
     }
 }
