@@ -129,7 +129,7 @@ namespace NoarkWsClientSample
                 }
             }
 
-            //Delete a field
+            //Delete all field values from the case file
             savedCaseFile.VirksomhetsspesifikkeMetadata.DeleteBsmField("group-applications", "app-secret");
 
             //Delete a field value only
