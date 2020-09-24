@@ -24,6 +24,9 @@ namespace NoarkWsClientSample
         [Option("password", Required = true, HelpText = "Password")]
         public string Password { get; set; }
 
+        [Option("resource", Required = false, HelpText = "Resource")]
+        public string Resource { get; set; }
+
         [Option("addr", Required = true, HelpText = "Server address, such as  https://clientname.dev.documaster.tech:8083")]
         public string ServerAddress { get; set; }
 

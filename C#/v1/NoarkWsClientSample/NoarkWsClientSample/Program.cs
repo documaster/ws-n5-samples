@@ -34,6 +34,7 @@ namespace NoarkWsClientSample
             finalizationSample.FinalizeObjectsInArchive("42", "43", "44", "45");
 
             QuerySample querySample = new QuerySample(documasterClients);
+            querySample.GetCaseFileByTwoSecondaryClassesUsingJoins("45-67771344-7", "457-66-22-1");
             querySample.GetCodeLists();
             querySample.GetCaseFilesByExternalId("14", "2344-11", "External system");
             querySample.GetCaseFileBySecondaryClass("14", "45503", "John Doe");
@@ -41,6 +42,12 @@ namespace NoarkWsClientSample
 
             FullTextSearchSample fullTextSearchSample = new FullTextSearchSample(documasterClients);
             fullTextSearchSample.Search();
+
+            BusinessSpecificMetadataSample businessSpecificMetadataSample =
+                new BusinessSpecificMetadataSample(documasterClients);
+            businessSpecificMetadataSample.GetBusinessSpecificMetadataRegistry();
+            businessSpecificMetadataSample.CrudOperationsWithBusinessSpecificMetadata();
+            businessSpecificMetadataSample.AddAndUpdateBusinessSpecificMetadataToCaseFile("case file title");
         }
 
         private static Options ParserCommandLineArguments(string[] args)

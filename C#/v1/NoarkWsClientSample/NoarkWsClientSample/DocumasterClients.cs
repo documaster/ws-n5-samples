@@ -53,8 +53,7 @@ namespace NoarkWsClientSample
 
             if (this.refreshToken == null)
             {
-                PasswordGrantTypeParams passwordGrantTypeParams = new PasswordGrantTypeParams(this.opts.ClientId,
-                    this.opts.ClientSecret, this.opts.Username, this.opts.Password, OpenIDConnectScope.OPENID);
+                PasswordGrantTypeParams passwordGrantTypeParams = GetDocumasterIdpGrantTypeParams();
                 AccessTokenResponse accessTokenResponse =
                     this.idpClient.GetTokenWithPasswordGrantType(passwordGrantTypeParams);
                 this.accessTokenExpirationTime = DateTime.Now.AddSeconds(accessTokenResponse.ExpiresInMs);
@@ -71,6 +70,17 @@ namespace NoarkWsClientSample
                 this.refreshToken = accessTokenResponse.RefreshToken;
                 this.noarkClient.AuthToken = accessTokenResponse.AccessToken;
             }
+        }
+
+        private PasswordGrantTypeParams GetDocumasterIdpGrantTypeParams()
+        {
+            return new PasswordGrantTypeParams(this.opts.ClientId,
+                this.opts.ClientSecret, this.opts.Username, this.opts.Password, OpenIDConnectScope.OPENID);
+        }
+
+        private PasswordGrantTypeParams GetAzureGrantTypeParams()
+        {
+            return new AzureGrantTypeParams(this.opts.ClientId, this.opts.ClientSecret, this.opts.Username, this.opts.Password, OpenIDConnectScope.OPENID, this.opts.Resource);
         }
 
         private void InitIdpClient(Options options)
